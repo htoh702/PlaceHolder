@@ -17,25 +17,30 @@ AWS EKS 구축, Flutter를 이용하여 프런트 엔드 구축, GitLab을 이�
    
 Landing Page 
 
-![image](https://github.com/user-attachments/assets/8b4675ea-9eda-4ef9-b973-872053420475)
+ ![image](https://github.com/user-attachments/assets/30368f3e-899a-4314-bc65-7ccb0d830131)
+
 
 Main Page
 
-![image](https://github.com/user-attachments/assets/305c21de-51f0-4c9e-b02c-176a2e6b74d8)
+ ![image](https://github.com/user-attachments/assets/19fefbe4-59ed-424d-bf79-ec1efdbeb49c)
+
 
 Create Course Page
 
-![image](https://github.com/user-attachments/assets/bc32b8c7-71f3-4f3a-a307-33db8a89fe4f)
+ ![image](https://github.com/user-attachments/assets/e3ed95b9-21f7-4923-8e96-73faab07cd1d)
+
 
 History Page
 
-![image](https://github.com/user-attachments/assets/22a5244b-240b-4e94-9688-ef989159a48d)
+ ![image](https://github.com/user-attachments/assets/d2f1bf3f-a2d7-486f-b980-f8cbeb9fe7f8)
+
 
 ---
 
 AWS 구성도
 
-<img width="452" alt="image" src="https://github.com/user-attachments/assets/bc4d5107-1866-40b7-b7be-6ae0c8746897">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/98408552-f036-4d50-8532-51e6c6242a43">
+
 
 -	AWS의 격리된 가상 네트워크 환경인 VPC를 이용해서 서울 리전에 2개의 VPC를 생성해서 개발 VPC와 운영 VPC를 나누어 관리
 -	개발 VPC는 1개의 가용 영역을, 운영 VPC는 2개의 가용 영역을 생성
@@ -51,7 +56,8 @@ AWS 구성도
  
 AWS EKS Cluster 구성도
 
-![image](https://github.com/user-attachments/assets/de16ab73-1d15-4e13-aaa9-57cda887d0c1)
+ ![image](https://github.com/user-attachments/assets/492573bd-daa2-4ac4-9fe8-b1654bb1b634)
+
 
 -	고가용성을 위해 HPA와 Karpenter 구축
 -	MSA환경을 구성하기 위해 AWS EKS에 Istio Service 구축
@@ -68,7 +74,8 @@ AWS EKS Cluster 구성도
 
 Serverless 구성도
 
-![image](https://github.com/user-attachments/assets/697e7da1-e331-417a-a1c5-2ba46f7aea5b)
+ ![image](https://github.com/user-attachments/assets/b19fd5a2-03f8-4084-a101-9cfbbbfbc26b)
+
 
 -	서울 리전에 AWS Amplify를 이용해서 프로젝트를 구성
 -	AWS Amplify에 Amazon Cognito를 연결하여 회원 관리
@@ -82,5 +89,6 @@ Serverless 구성도
 
 비교 결과
 
-<img width="321" alt="image" src="https://github.com/user-attachments/assets/af9ab2e6-d3ca-487c-a2fa-5d7728412f8d">
+<img width="321" alt="image" src="https://github.com/user-attachments/assets/51543e55-2b14-493f-a3e4-8dd9d15bab29">
+
 
