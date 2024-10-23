@@ -1,0 +1,83 @@
+# deny-all-ingress-phr-fro-ns.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: phr-fro-ns
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress: []
+---
+# deny-all-ingress-pha_crd_ns.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: pha_crd_ns
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress: []
+---
+# deny-all-ingress-pha_cwr_ns.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: pha_cwr_ns
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress: []
+---
+# deny-all-ingress-phr_hrd_ns.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: phr_hrd_ns
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress: []
+---
+# deny-all-ingress-pha_hwr_ns.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: pha_hwr_ns
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress: []
+---
+# deny-all-ingress-redis.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: redis
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress: []
+---
+# deny-all-ingress-mongo.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: mongo
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress: []

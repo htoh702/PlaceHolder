@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: phr-hrd-dep
+  name: phr-hrd-dep
+  namespace: phr-hrd-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: phr-hrd-dep
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: phr-hrd-dep
+    spec:
+      containers:
+      - image: parksewoong/placeholder-hotplace:r9
+        name: placeholder-test

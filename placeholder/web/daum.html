@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Daum Address Search</title>
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .wrap {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+      #map_wrap {
+        width: 100%;
+        height: 100%;
+        border: 1px solid #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="map_wrap"></div>
+    </div>
+    <script>
+      function execDaumPostcode() {
+        new daum.Postcode({
+          oncomplete: function (data) {
+            const jsonData = JSON.stringify({
+              address: data.address,
+              zonecode: data.zonecode,
+            });
+            window.parent.postMessage(jsonData, "*");
+          },
+        }).open();
+      }
+
+      execDaumPostcode();
+    </script>
+  </body>
+</html>

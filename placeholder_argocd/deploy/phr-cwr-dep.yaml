@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: phr-cwr-dep
+  name: phr-cwr-dep
+  namespace: phr-cwr-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: phr-cwr-dep
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: phr-cwr-dep
+    spec:
+      containers:
+      - image: parksewoong/placeholder-course:w7
+        name: placeholder-test

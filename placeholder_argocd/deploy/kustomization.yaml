@@ -1,0 +1,17 @@
+resources:
+- phr-crd-dep.yaml
+- phr-crd-svc.yaml
+- phr-cwr-dep.yaml
+- phr-cwr-svc.yaml
+- phr-front-dep.yaml
+- phr-front-svc.yaml
+- phr-hrd-dep.yaml
+- phr-hrd-svc.yaml
+- phr-hwr-dep.yaml
+- phr-hwr-svc.yaml
+- phr-urd-dep.yaml
+- phr-urd-svc.yaml
+- redis-dep.yaml
+- redis-svc.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization

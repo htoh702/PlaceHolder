@@ -1,0 +1,170 @@
+# allow-istio-to-phr-fro-ns.yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-istio-to-phr-fro-ns
+  namespace: phr-fro-ns
+spec:
+  selector:
+    matchLabels:
+      app: phr-fro-svc
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["istio-system"]
+    to:
+    - operation:
+        methods: ["GET", "POST"]
+---
+# allow-istio-to-phr-crd-ns.yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-istio-to-phr-crd-ns
+  namespace: phr-crd-ns
+spec:
+  selector:
+    matchLabels:
+      app: phr-crd-svc
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["istio-system"]
+    to:
+    - operation:
+        methods: ["GET", "POST"]
+---
+# allow-istio-to-phr-cwr-ns.yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-istio-to-phr-cwr-ns
+  namespace: phr-cwr-ns
+spec:
+  selector:
+    matchLabels:
+      app: phr-cwr-svc
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["istio-system"]
+    to:
+    - operation:
+        methods: ["GET", "POST"]
+---
+# allow-istio-to-phr-hrd-ns.yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-istio-to-phr-hrd-ns
+  namespace: phr-hrd-ns
+spec:
+  selector:
+    matchLabels:
+      app: phr-hrd-svc
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["istio-system"]
+    to:
+    - operation:
+        methods: ["GET", "POST"]
+---
+# allow-istio-to-phr-urd-ns.yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-istio-to-phr-urd-ns
+  namespace: phr-urd-ns
+spec:
+  selector:
+    matchLabels:
+      app: phr-urd-svc
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["istio-system"]
+    to:
+    - operation:
+        methods: ["GET", "POST"]
+---
+# allow-istio-to-phr-hwr-ns.yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-istio-to-phr-hwr-ns
+  namespace: phr-hwr-ns
+spec:
+  selector:
+    matchLabels:
+      app: phr-hwr-svc
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["istio-system"]
+    to:
+    - operation:
+        methods: ["GET", "POST"]
+---
+# allow-istio-to-redis.yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-istio-to-redis
+  namespace: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis-svc
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["istio-system"]
+    to:
+    - operation:
+        methods: ["GET", "POST"]
+---
+# allow-istio-to-mongo.yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-istio-to-mongo
+  namespace: mongo
+spec:
+  selector:
+    matchLabels:
+      app: mongo-svc
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["istio-system"]
+    to:
+    - operation:
+        methods: ["GET", "POST"]
+---
+# allow-istio-to-ingress.yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-istio-to-ingress
+  namespace: ingress
+spec:
+  selector:
+    matchLabels:
+      app: ingress-svc
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["istio-system"]
+    to:
+    - operation:
+        methods: ["GET", "POST"]

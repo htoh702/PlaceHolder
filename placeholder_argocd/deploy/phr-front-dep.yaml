@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: phr-fro-dep
+  name: phr-fro-dep
+  namespace: phr-fro-ns
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: phr-fro-dep
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: phr-fro-dep
+    spec:
+      containers:
+      - image: ohhong/phr-front:v1
+        name: placeholder-frontend-dp6mh
+        resources: {}
+status: {}

@@ -1,0 +1,59 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: placeholder-virtualservice
+  namespace: istio-system
+spec:
+  hosts:
+  - "192.168.0.13"
+  gateways:
+  - placeholder-gateway
+  http:
+  - match:
+    - uri:
+        prefix: "/hotplace/write"
+    route:
+    - destination:
+        host: "phr-hwr-svc.phr-hwr-ns.svc.cluster.local"
+        port:
+          number: 8080
+  - match:
+    - uri:
+        prefix: "/hotplace/read"
+    route:
+    - destination:
+        host: "phr-hrd-svc.phr-hrd-ns.svc.cluster.local"
+        port:
+          number: 8080
+  - match:
+    - uri:
+        prefix: "/course/read"
+    route:
+    - destination:
+        host: "phr-crd-svc.phr-crd-ns.svc.cluster.local"
+        port:
+          number: 8080
+  - match:
+    - uri:
+        prefix: "/course/write"
+    route:
+    - destination:
+        host: "phr-cwr-svc.phr-cwr-ns.svc.cluster.local"
+        port:
+          number: 8080
+  - match:
+    - uri:
+        prefix: "/member/read"
+    route:
+    - destination:
+        host: "phr-urd-svc.phr-urd-ns.svc.cluster.local"
+        port:
+          number: 8080
+  - match:
+    - uri:
+        prefix: "/"
+    route:
+    - destination:
+        host: "phr-fro-svc.phr-fro-ns.svc.cluster.local"
+        port:
+          number: 2040

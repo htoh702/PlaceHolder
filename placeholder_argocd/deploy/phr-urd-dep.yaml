@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: phr-urd-dep
+  name: phr-urd-dep
+  namespace: phr-urd-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: phr-urd-dep
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: phr-urd-dep
+    spec:
+      containers:
+      - image: parksewoong/placeholder-user:r3
+        name: placeholder-user-read

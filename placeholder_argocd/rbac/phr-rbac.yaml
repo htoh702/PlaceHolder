@@ -1,0 +1,248 @@
+# monitoring-write-role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: monitoring-write-role
+  namespace: phr-mn-ns
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "deployments", "configmaps", "secrets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+---
+# frontend-role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: frontend-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "deployments"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+---
+# backend-role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: backend-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "deployments"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+---
+# db-role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: db-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "persistentvolumeclaims", "configmaps"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["storageclasses"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["apps"]
+  resources: ["replicasets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+---
+# sec-role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: sec-role
+rules:
+- apiGroups: [""]
+  resources: ["networkpolicies", "secrets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+---
+# monitoring-read-only-role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: monitoring-read-only-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "deployments", "configmaps", "secrets"]
+  verbs: ["get", "list", "watch"]
+---
+# ops-role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ops-role
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+---
+# frontend-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: frontend-binding
+  namespace: phr-fro-ns
+subjects:
+- kind: User
+  name: frontend-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: frontend-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# course-read-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: course-read-binding
+  namespace: phr-crd-ns
+subjects:
+- kind: User
+  name: backend-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: backend-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# course-write-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: course-write-binding
+  namespace: phr-cwr-ns
+subjects:
+- kind: User
+  name: backend-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: backend-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# hotplace-read-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: hotplace-read-binding
+  namespace: phr-hrd-ns
+subjects:
+- kind: User
+  name: backend-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: backend-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# hotplace-write-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: hotplace-write-binding
+  namespace: phr-hwr-ns
+subjects:
+- kind: User
+  name: backend-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: backend-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# user-read-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: user-read-binding
+  namespace: phr-urd-ns
+subjects:
+- kind: User
+  name: backend-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: backend-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# redis-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: redis-binding
+  namespace: redis
+subjects:
+- kind: User
+  name: backend-user
+  apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: db-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: backend-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# db-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: db-binding
+  namespace: mongo
+subjects:
+- kind: User
+  name: db-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: db-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# monitoring-write-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: monitoring-write-binding
+  namespace: phr-mn-ns
+subjects:
+- kind: User
+  name: monitoring-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: monitoring-write-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# sec-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: sec-binding
+subjects:
+- kind: User
+  name: sec-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: sec-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# monitoring-read-only-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: monitoring-read-only-binding
+subjects:
+- kind: User
+  name: monitoring-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: monitoring-read-only-role
+  apiGroup: rbac.authorization.k8s.io

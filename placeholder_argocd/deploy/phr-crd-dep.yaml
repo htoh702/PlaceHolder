@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: phr-crd-dep
+  name: phr-crd-dep
+  namespace: phr-crd-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: phr-crd-dep
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: phr-crd-dep
+    spec:
+      containers:
+      - image: parksewoong/placeholder-course:r2
+        name: placeholder-test
